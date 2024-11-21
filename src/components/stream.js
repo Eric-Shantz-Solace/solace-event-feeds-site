@@ -9,6 +9,8 @@ import {
   CaretRightOutlined,
   ClearOutlined,
 } from '@ant-design/icons';
+import StringOutput from './StringOutput';
+import UserInputTable from './UserInputTable';
 
 const MAX_RENDERED_MESSAGES = 100;
 
@@ -208,6 +210,44 @@ const Stream = () => {
     </div>
   );
 
+  const generatedData = {
+    // Exmaple of data format
+    columns: [
+      {
+        field: 'property_1',
+        headerName: 'Name',
+        width: 150,
+        editable: true,
+        sortable: false,
+      },
+      {
+        field: 'property_2',
+        headerName: 'Age',
+        width: 100,
+        editable: true,
+        sortable: false,
+      },
+      {
+        field: 'property_3',
+        headerName: 'Eye Colour',
+        width: 100,
+        editable: true,
+        sortable: false,
+      },
+    ],
+    rows: [
+      { id: 1, property_1: 'John', property_2: 'Deer', property_3: 'Brown' },
+      { id: 2, property_1: 'Jane', property_2: 'Doe', property_3: 'Blue' },
+    ],
+  };
+
+  const TopicTester = (
+    <div>
+      <StringOutput generatedData={generatedData}/>
+      <UserInputTable generatedData={generatedData} />
+    </div>
+  );
+
   return (
     <div>
       <Collapse
@@ -227,6 +267,25 @@ const Stream = () => {
         size="medium"
         activeKey={streamedEvents.length > 0 ? ['streams'] : []}
         collapsible={session ? null : 'disabled'}
+      />
+
+      <Collapse
+        items={[
+          {
+            key: 'topicTester',
+            label: 'Topic Tester Beta',
+            children: TopicTester,
+          },
+        ]}
+        expandIcon={({ isActive }) => (
+          <CaretRightOutlined
+            style={{ fontSize: '20px', padding: '15px 0 0 0' }}
+            rotate={isActive ? 90 : 0}
+          />
+        )}
+        size="medium"
+        activeKey={['topicTester']}
+        collapsible={true}
       />
     </div>
   );

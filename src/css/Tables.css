@@ -1,0 +1,16 @@
+.try-it-tab{
+    cursor: pointer;
+    position: relative;
+}
+
+.try-it-tab.active::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: #000000; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+}
+

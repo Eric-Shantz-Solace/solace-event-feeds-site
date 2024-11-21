@@ -1,0 +1,8 @@
+.try-it-table-container {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.highlighted-cell {
+  background-color: #00e3a62e !important;
+}

@@ -9,6 +9,11 @@ export const SolaceSession = ({ children }) => {
   const [sessionProperties, setSessionProperties] = useState({});
   const [isAnyEventRunning, setIsAnyEventRunning] = useState(false);
   const [streamedEvents, setStreamedEvents] = useState([]);
+  const [subscribedTopicString, setSubscribedTopicString] = useState("");
+  const [publishedTopicString, setPublishedTopicString] = useState("");
+  const [activeTab, setActivetab] = useState(localStorage.getItem("LastActiveTab") ? JSON.parse(localStorage.getItem("LastActiveTab"))  : "demo" );
+  const [activeDataChip, setActiveDataChip] = useState(localStorage.getItem("LastActiveDataChip") ? JSON.parse(localStorage.getItem("LastActiveDataChip"))  : "car_maker" );
+  const [columnData, setColumnData] = useState([]);
   return (
     <SessionContext.Provider
       value={{
@@ -20,6 +25,16 @@ export const SolaceSession = ({ children }) => {
         setIsAnyEventRunning,
         streamedEvents,
         setStreamedEvents,
+        subscribedTopicString,
+        setSubscribedTopicString,
+        publishedTopicString,
+        setPublishedTopicString,
+        activeTab,
+        setActivetab,
+        activeDataChip,
+        setActiveDataChip,
+        columnData,
+        setColumnData,
       }}
     >
       {children}
